@@ -3,13 +3,13 @@
         {{title}}
     </div>
     <ul>
-        {{#each menus as |menu|}}
+        {{#each items as |item|}}
             <li>
                 <a
-                    href="{{ menu.link }}"
-                    {{bind-attr class="menu.class" style="menu.style"}}
+                    href="{{ item.link }}"
+                    {{bind-attr class="item.class" style="item.style"}}
                 >
-                    {{ menu.text }}
+                    {{ item.text }}
                 </a>
             </li>
         {{/each}}
