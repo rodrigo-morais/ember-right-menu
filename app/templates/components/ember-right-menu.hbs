@@ -1,0 +1,17 @@
+<div class="menu" {{bind-attr style="background-color: {{backgroundColor}};"}}>
+    <div {{bind-attr class="title" style="border-bottom: solid 1px {{titleBorderBottomColor}}; color: {{titleColor}}"}}>
+        {{title}}
+    </div>
+    <ul>
+        {{#each menus as |menu|}}
+            <li>
+                <a
+                    href="{{ menu.link }}"
+                    {{bind-attr class="menu.class" style="menu.style"}}
+                >
+                    {{ menu.text }}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
