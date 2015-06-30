@@ -3,16 +3,16 @@
         {{title}}
     </div>
     <ul>
-        {{#each items as |item|}}
+        {{#each items as |item index|}}
             {{#if item.selected}}
-                <li>
+                <li {{action "select" index}}>
                     {{#link-to item.link class="selected" style=menuItemSelectedStyle}}
                         {{ item.text }}
                     {{/link-to}}
                 </li>
             {{else}}
-                <li>
-                    {{#link-to item.link style=menuItemStyle}}
+                <li {{action "select" index}}>
+                    {{#link-to item.link style=menuItemStyle }}
                         {{ item.text }}
                     {{/link-to}}
                 </li>

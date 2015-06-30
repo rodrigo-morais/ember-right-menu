@@ -43,5 +43,20 @@ export default Ember.Component.extend({
         return _items.toArray();
     }),
     actions: {
+        select: function(index){
+            let _menus = this.get('menus'),
+                _newMenu = [];
+
+            _menus.forEach(function(_menu, _index){
+                _newMenu.push({
+                    'text': _menu.text,
+                    'link': _menu.link,
+                    'selected': index === _index
+                });
+            });
+
+            this.set('menus', _newMenu);
+
+        }
     }
 });
