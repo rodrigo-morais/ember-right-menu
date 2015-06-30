@@ -5,18 +5,18 @@ export default Ember.Route.extend({
         return {"menus": 
             [
                 {
-                    "text": "menu 1",
-                    "link": "menu1",
-                    "selected": true
-                },
-                {
-                    "text": "menu 2",
-                    "link": "menu2",
+                    "text": "Page 1",
+                    "link": "page1",
                     "selected": false
                 },
                 {
-                    "text": "menu 3",
-                    "link": "menu3",
+                    "text": "Page 2",
+                    "link": "page2",
+                    "selected": false
+                },
+                {
+                    "text": "Page 3",
+                    "link": "page3",
                     "selected": false
                 }
             ]
