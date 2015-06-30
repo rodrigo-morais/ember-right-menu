@@ -22,6 +22,11 @@ export default Ember.Object.extend({
             _options = this.optionsDefault;
         }
 
+        if(Object.keys(_options).length === 0)
+        {
+            return _styles;
+        }
+
         Object.keys(_styles).forEach((_key) =>{
             let _style = '';
             Object.keys(_options[_key]).forEach((_option) =>{
