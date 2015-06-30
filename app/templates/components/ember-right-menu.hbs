@@ -1,17 +1,29 @@
 <div class="menu" {{bind-attr style="menuStyle"}}>
-    <div class="title" {{bind-attr style="border-bottom: solid 1px {{titleBorderBottomColor}}; color: {{titleColor}}"}}>
+    <div class="title" {{bind-attr style="titleStyle"}}>
         {{title}}
     </div>
     <ul>
         {{#each items as |item|}}
-            <li>
-                <a
-                    href="{{ item.link }}"
-                    {{bind-attr class="item.class" style="item.style"}}
-                >
-                    {{ item.text }}
-                </a>
-            </li>
+            {{#if item.selected}}
+                <li>
+                    <a
+                        href="{{ item.link }}"
+                        class="selected"
+                        {{bind-attr style="menuItemSelectedStyle"}}
+                    >
+                        {{ item.text }}
+                    </a>
+                </li>
+            {{else}}
+                <li>
+                    <a
+                        href="{{ item.link }}"
+                        {{bind-attr style="menuItemStyle"}}
+                    >
+                        {{ item.text }}
+                    </a>
+                </li>
+            {{/if}}
         {{/each}}
     </ul>
 </div>
