@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import StyleBuilder from 'ember-right-menu/components/style-builder';
+import LinkView from 'ember-right-menu/components/link-view';
 
 export default Ember.Component.extend({
     tagName: '',

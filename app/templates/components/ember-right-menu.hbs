@@ -6,22 +6,15 @@
         {{#each items as |item|}}
             {{#if item.selected}}
                 <li>
-                    <a
-                        href="{{ item.link }}"
-                        class="selected"
-                        {{bind-attr style="menuItemSelectedStyle"}}
-                    >
+                    {{#link-to item.link class="selected" style=menuItemSelectedStyle}}
                         {{ item.text }}
-                    </a>
+                    {{/link-to}}
                 </li>
             {{else}}
                 <li>
-                    <a
-                        href="{{ item.link }}"
-                        {{bind-attr style="menuItemStyle"}}
-                    >
+                    {{#link-to item.link style=menuItemStyle}}
                         {{ item.text }}
-                    </a>
+                    {{/link-to}}
                 </li>
             {{/if}}
         {{/each}}
