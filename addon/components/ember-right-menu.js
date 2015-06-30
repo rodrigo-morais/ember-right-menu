@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    tagName: 'div',
+    tagName: '',
     optionsDefault: {
         'menu': {
-            'background-color': '#F5F5F5'
+            'background-color': '#F5F5F5',
+            'width': '15%'
         }
     },
     options: {},
@@ -34,7 +35,7 @@ export default Ember.Component.extend({
                 menuStyle = _option + ':' + _options.menu[_option];
             }
             else{
-                menuStyle = menuStyle + ', ' + _option + ':' + _options.menu[_option];
+                menuStyle = menuStyle + '; ' + _option + ':' + _options.menu[_option];
             }
         });
 
