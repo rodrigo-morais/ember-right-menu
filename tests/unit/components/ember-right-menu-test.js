@@ -34,3 +34,103 @@ test('verify if tag name is blank', function(assert){
     
     assert.equal(this.$().context.tagName, 'DIV');
 });
+
+test('verify if default options are correct', function(assert){
+    var component = this.subject(),
+        menus = [],
+        optionsDefault = {
+            'menu': {
+                'background-color': '#F5F5F5',
+                'width': '15%'
+            },
+            'title': {
+                'border-bottom': 'solid 1px #f5da55',
+                'color': '#000000'
+            },
+            'menuItem':{
+                'color': '#8c8e87'
+            },
+            'menuItemSelected':{
+                'color': '#000000',
+                'background-color': '#FFFAF0',
+                'border-left': 'solid 2px #f5da55'
+            }
+        };
+    
+    Ember.run(() => {
+        component
+            .set(
+                'menus',
+                menus
+            );
+    });
+
+    assert
+        .equal(
+            JSON.stringify(component.optionsDefault),
+            JSON.stringify(optionsDefault)
+        );
+});
+
+test("verify if options are empty when it isn't informed", function(assert){
+    var component = this.subject(),
+        menus = [],
+        options = {};
+    
+    Ember.run(() => {
+        component
+            .set(
+                'menus',
+                menus
+            );
+    });
+    
+    assert
+        .equal(
+            JSON.stringify(component.options),
+            JSON.stringify(options)
+        );
+});
+
+test('verify if style is correctly built when options are informed', function(assert){
+    var component = this.subject(),
+        menus = [],
+        options = {
+            'menu': {
+                'background-color': '#FFFFFF',
+                'width': '45%'
+            },
+            'title': {
+                'border-bottom': 'solid 1px #f5da55',
+                'color': '#FFFFFF'
+            },
+            'menuItem':{
+                'color': '#8c8e87'
+            },
+            'menuItemSelected':{
+                'color': '#000000',
+                'background-color': '#000000',
+                'border-left': 'solid 12px #f5da55'
+            }
+        },
+        styles;
+    
+    Ember.run(() => {
+        component
+            .set(
+                'options',
+                options
+            )
+            .set(
+                'menus',
+                menus
+            );
+
+            styles = component.get('styles');
+    });
+
+    assert.equal(JSON.stringify(styles.menu), '"background-color:#FFFFFF; width:45%"');
+    assert.equal(JSON.stringify(styles.title), '"border-bottom:solid 1px #f5da55; color:#FFFFFF"');
+    assert.equal(JSON.stringify(styles.menuItem), '"color:#8c8e87"');
+    assert.equal(JSON.stringify(styles.menuItemSelected), '"color:#000000; background-color:#000000; border-left:solid 12px #f5da55"');
+});

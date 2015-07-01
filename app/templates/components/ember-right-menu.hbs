@@ -1,18 +1,18 @@
-<div class="menu" {{bind-attr style="menuStyle"}}>
-    <div class="title" {{bind-attr style="titleStyle"}}>
+<div class="menu" {{bind-attr style="styles.menu"}}>
+    <div class="title" {{bind-attr style="styles.title"}}>
         {{title}}
     </div>
     <ul>
         {{#each items as |item index|}}
             {{#if item.selected}}
                 <li {{action "select" index}}>
-                    {{#link-to item.link class="selected" style=menuItemSelectedStyle}}
+                    {{#link-to item.link class="selected" style=styles.menuItemSelected}}
                         {{ item.text }}
                     {{/link-to}}
                 </li>
             {{else}}
                 <li {{action "select" index}}>
-                    {{#link-to item.link style=menuItemStyle }}
+                    {{#link-to item.link style=styles.menuItem}}
                         {{ item.text }}
                     {{/link-to}}
                 </li>

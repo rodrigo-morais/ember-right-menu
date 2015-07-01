@@ -22,17 +22,14 @@ export default Ember.Component.extend({
         }
     },
     options: {},
+    titleStyle: '',
     title: '',
     items: Ember.computed('menus', function() {
         let _menus = this.get('menus'),
             _items = Ember.Set.create(),
-            _styles = {},
             builder = StyleBuilder.create();
 
-        _styles = builder.build(this.optionsDefault, this.options);
-        Object.keys(_styles).forEach((_key) =>{
-            this.set(_key + 'Style', _styles[_key]);
-        });
+        this.set('styles', builder.build(this.optionsDefault, this.options));
 
         _menus.forEach((_menu) => {
             _items.add(_menu);
@@ -40,6 +37,14 @@ export default Ember.Component.extend({
 
 
         return _items.toArray();
+    }),
+    styles: Ember.computed('options', function(){
+        let _styles = {},
+            builder = StyleBuilder.create();
+
+        _styles = builder.build(this.optionsDefault, this.options);
+        
+        return _styles;
     }),
     actions: {
         select: function(index){
