@@ -134,3 +134,69 @@ test('verify if style is correctly built when options are informed', function(as
     assert.equal(JSON.stringify(styles.menuItem), '"color:#8c8e87"');
     assert.equal(JSON.stringify(styles.menuItemSelected), '"color:#000000; background-color:#000000; border-left:solid 12px #f5da55"');
 });
+
+test("verify if items are empty when it isn't informed", function(assert){
+    var component = this.subject(),
+        items;
+    
+    Ember.run(() => {
+        items = component
+                    .get(
+                        'items'
+                    );
+    });
+
+    assert.equal(items.length, 0);
+});
+
+test("verify if items are empty when menu is informed with an empty array", function(assert){
+    var component = this.subject(),
+        menus = [],
+        items;
+    
+    Ember.run(() => {
+        component
+            .set(
+                'menus',
+                menus
+            );
+
+        items = component
+                    .get(
+                        'items'
+                    );
+    });
+
+    assert.equal(items.length, 0);
+});
+
+test("verify if items are the same number of menus than the menus was informed to component", function(assert){
+    var component = this.subject(),
+        qty = Math.round(Math.random() * (100 - 1) + 1, 0),
+        menus = [],
+        items;
+
+    for(let counter = 0; counter < qty; counter = counter + 1){
+        let menu = {
+            'text': 'Page ' + counter,
+            'link': 'page' + counter,
+            'selected': false
+        };
+        menus.push(menu);
+    }
+    
+    Ember.run(() => {
+        component
+            .set(
+                'menus',
+                menus
+            );
+
+        items = component
+                    .get(
+                        'items'
+                    );
+    });
+
+    assert.equal(items.length, qty);
+});

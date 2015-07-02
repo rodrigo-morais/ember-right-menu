@@ -31,9 +31,11 @@ export default Ember.Component.extend({
 
         this.set('styles', builder.build(this.optionsDefault, this.options));
 
-        _menus.forEach((_menu) => {
-            _items.add(_menu);
-        });
+        if(_menus){
+            _menus.forEach((_menu) => {
+                _items.add(_menu);
+            });
+        }
 
 
         return _items.toArray();
