@@ -1,0 +1,1 @@
+export { default } from 'ember-right-menu/blueprints/ember-right-menu';
