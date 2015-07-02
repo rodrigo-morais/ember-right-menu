@@ -56,23 +56,29 @@ Ember.Route.extend({
 The standards styles that are possible inform to change the layout of component are:
 
 To menu:
+
     - `background-color` - change the background color of the component. The standard color is #F5F5F5.
     - `width` - change the width of component. The standard width is 15%.
 
 To title:
+
     - `border-bottom` - change the border bottom of title. The standard value is solid 1px #f5da55.
     - `color` - change the color of title. The standard color is #000000.
 
 To menu item:
+
     - `color` - change the color of menu item. The standard color is #8c8e87.
 
 To selected menu item:
+
     - `color` - change the color of a selected menu item. The standard color is #000000.
     - `background-color` - change the background color of a DIV around the selected menu item. The standard color is #FFFAF0.
     - `border-left` - change the left border of a selected menu item. The standard value is solid 2px #f5da55.
+    
 
 The value have to be informed like a JSON object like that:
 
+```sh
 options = {
     'menu': {
         'background-color': '#F5F5F5',
@@ -91,5 +97,6 @@ options = {
         'border-left': 'solid 2px #f5da55'
     }
 };
+```
 
 Is possible add new styles to change the layout of component if necessary.
