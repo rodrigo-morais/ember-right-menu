@@ -200,3 +200,46 @@ test("verify if items are the same number of menus than the menus was informed t
 
     assert.equal(items.length, qty);
 });
+
+test("verify when an item is clicked if it state change to selected", function(assert){
+    var component = this.subject(),
+        qty = Math.round(Math.random() * (100 - 1) + 1, 0),
+        menus = [],
+        items,
+        index = Math.round(Math.random() * (qty - 1) + 1, 0);
+
+    for(let counter = 0; counter < qty; counter = counter + 1){
+        let menu = {
+            'text': 'Page ' + counter,
+            'link': 'page' + counter,
+            'selected': false
+        };
+        menus.push(menu);
+    }
+    
+    Ember.run(() => {
+        component
+            .set(
+                'menus',
+                menus
+            );
+
+        items = component
+                    .get(
+                        'items'
+                    );
+    });
+
+
+
+    assert.ok(items[index].selected === false);
+
+    component.send('select', index);
+
+    items = component
+                .get(
+                    'items'
+                );
+
+    assert.ok(items[index].selected);
+});
